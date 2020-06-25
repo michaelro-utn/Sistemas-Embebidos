@@ -37,7 +37,7 @@ void setup() {
 
 void loop() {
   if (digitalRead (btn)== HIGH){
-    for (n=0;n<=1;n++){
+    for (n=0;n<=7;n++){
         for(i=0;i<6;i++){
           digitalWrite(vector[i], HIGH);
           delay(150);
@@ -49,7 +49,7 @@ void loop() {
  //Boton2 
  
   if (digitalRead (btn1)==HIGH){
-      for (k=0;k<=1;k++){
+      for (k=0;k<=9;k++){
         digitalWrite (led1, HIGH);
         digitalWrite (led6, HIGH);
         delay(200); 
