@@ -39,7 +39,7 @@ void loop() {
     if(cont<30)
         cont++;
       else
-        cont=0; 
+        cont=cont; 
         dec=cont/10;      // 15/10=1.5->1    5/10=0.5->0
         uni= cont-(dec*10);  // 15-10=5     5-0=5
   
@@ -69,7 +69,7 @@ void loop() {
     if(cont<30)
         cont=cont-1;
       else
-        cont=0; 
+        cont=cont; 
         dec=cont/10;      // 15/10=1.5->1    5/10=0.5->0
         uni= cont-(dec*10);  // 15-10=5     5-0=5
   
@@ -95,6 +95,29 @@ if (cont==30){
 }else{
   digitalWrite (led2,HIGH);
   digitalWrite (led1, LOW);
+}
+if (cont==30){
+      if(cont==30)
+        cont=cont;
+      else
+        cont=0; 
+        dec=cont/10;      // 15/10=1.5->1    5/10=0.5->0
+        uni= cont-(dec*10);  // 15-10=5     5-0=5
+  
+  digitalWrite (decenas,HIGH);
+  digitalWrite (unidades, LOW);
+  /*
+   * Imprimir valor decenas 
+   */
+   segmentos(dec); 
+   delay (200);
+   digitalWrite (decenas,LOW);
+   digitalWrite (unidades, HIGH);
+   /*
+    * Imprimir valor de unidades 
+    */
+    segmentos(uni);
+    delay(200);
 }
 }
 void segmentos (int i){
