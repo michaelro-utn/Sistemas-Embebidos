@@ -18,7 +18,7 @@ void loop() {
 //    char vector[tama];
 //    contra.toCharArray(vector,tama);
 //    Serial.println("Contraseña Ingresada!")
-    if (contra=="avion"){
+    if (contra=="7482"){
       sal="1111";
     }else{
       sal="0000";
