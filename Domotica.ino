@@ -3,7 +3,13 @@
 #include <LiquidCrystal.h>
 LiquidCrystal lcd(13,12,11,10,9,8);
 
-const int led[4]={7,6,5,4};
+int led1=4;
+int led2=5;
+int led3=6;
+int led4=7;
+int numAleatorio;
+int x=0;
+int y=0;
 //Interrupciones
 int on=0;
 int modo=0;
@@ -18,9 +24,10 @@ void setup() {
   lcd.begin(16,2);
   lcd.setCursor(0,0);
   lcd.print("System: ");
-  for (i=0;i<4;i++){
-    pinMode(led[i],OUTPUT);
-  }
+   pinMode(led1,OUTPUT);
+   pinMode(led2,OUTPUT);
+   pinMode(led3,OUTPUT);
+   pinMode(led4,OUTPUT);
   attachInterrupt(digitalPinToInterrupt(2),activation,LOW);
   attachInterrupt(digitalPinToInterrupt(3),state,LOW);
   Timer1.initialize(1000000);
@@ -31,14 +38,17 @@ void setup() {
 
 void loop() {
   if(modo==0 && on==1){
-          for(j=0;j<5;j++){
-//        lcd.setCursor(0,1);
-//        lcd.print("                ");
-        digitalWrite(led[j],HIGH);
-        delay(200);
-        digitalWrite(led[j],LOW);
-        delay(200);
-      }
+     numAleatorio=random(0,4);
+     for(x=0;x<numAleatorio;x++){
+       y=x+4;
+       digitalWrite(y,HIGH);
+     }
+     delay(500);
+     y=0;
+     for(x=0;x<numAleatorio;x++){
+     y=x+4;
+     digitalWrite(y,LOW);
+     }
   }
   if(modo==1){
       conversor=analogRead(0);
@@ -48,7 +58,7 @@ void loop() {
   }
   if(modo==1 && on==1){
       conversor1=analogRead(1);
-      minutos=(conversor1*4)/68;
+      minutos=(conversor1*4)/166;
       lcd.setCursor(7,1);
       lcd.print(minutos);
   }
@@ -101,7 +111,7 @@ void seconds(){
 }
 void minutes(){
   minutos++;
-  if(minutos>60){
+  if(minutos>24){
     minutos=0;
   }
   if(minutos<10){
