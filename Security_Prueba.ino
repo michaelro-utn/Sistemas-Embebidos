@@ -13,7 +13,7 @@ int clave;
 //variables reloj 
 int minutos=0;
 int hora=0;
-int peri=5500;
+int peri=55000;
 unsigned long ttiempo=0;
 //variables hardware
 int led1=2;
